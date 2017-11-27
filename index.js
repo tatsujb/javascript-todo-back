@@ -1,10 +1,11 @@
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser');
-const uuidV4 = require('uuid.v4')
+const uuidV4 = require('uuid.v4');
+const cors = require('cors');
 
-const app = express()
+const app = express();
 let todoList = [];
-
+app.use(cors({ origin: 'http://localhost:4200', credentials :  true }));
 app.use(bodyParser.json());
 app.get('/todos', (req, res) => res.send(todoList))
 
